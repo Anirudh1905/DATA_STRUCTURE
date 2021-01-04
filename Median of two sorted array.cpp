@@ -29,9 +29,9 @@ int getMedian(int ar1[],int ar2[], int n)
 
 int median(int arr[], int n) 
 { 
-	if(n%2)
-	    return arr[n/2];
-	return (arr[(n/2)-1]+arr[(n/2)])/2;
+	if(n%2==0)
+	    return (arr[(n/2)-1]+arr[(n/2)])/2;
+	return arr[n/2];
 } 
 
 int main() 
