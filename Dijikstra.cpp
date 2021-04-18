@@ -4,7 +4,34 @@
 using namespace std;
 // Number of vertices in the graph
 #define V 9
+vector <int> dijkstra(int V, vector<vector<int>> adj[], int src)  //optimized
+{
+	vector<vector<int> > graph(V, vector<int>(V, 0));
+	for(int i=0; i<V; i++)
+	    for(int j=0; j<adj[i].size(); j++)
+		graph[i][adj[i][j][0]] = adj[i][j][1];
+	vector<int>value(V,INT_MAX);
+	vector<bool>processed(V,false);
+	value[src]=0;
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+	pq.push({0, src});
+	while(!pq.empty())
+	{
+	    int u=pq.top().second;
+	    pq.pop();
+	    processed[u]=true;
+	    for(int v=0;v<V;v++)
+	    {
+		if(graph[u][v]!=0 && processed[v]==false && value[u]+graph[u][v]<value[v])
+		{
+		    value[v]=value[u]+graph[u][v];
+		    pq.push({value[v],v});
 
+		}
+	    }
+	}
+	return value;
+}
 int minDistance(vector<int>value,vector<bool>processed)
 {
 	// Initialize min value
