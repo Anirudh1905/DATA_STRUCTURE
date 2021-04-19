@@ -24,7 +24,7 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int src)  //optimized
 	    {
     		if(graph[u][v]!=0 && processed[v]==false && graph[u][v]<value[v])
     		{
-    		    value[v]=value[u]+graph[u][v];
+    		    value[v]=graph[u][v];
     		    pq.push({value[v],v});
     
     		}
@@ -69,7 +69,7 @@ void prims(int graph[V][V], int src)
         {
             if(graph[u][j]!=0 && processed[j]==false && (graph[u][j]<value[j]))
             {
-                value[j]=value[u]+graph[u][j];
+                value[j]=graph[u][j];
                 parent[j]=u;
             }
         }
