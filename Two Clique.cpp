@@ -43,13 +43,13 @@ int main()
 // 	        cout<<x<<" ";
 // 	    cout<<endl;
 // 	}
-	!bipartite(0,0,grev,1,color)?cout<<"Not Possible":cout<<"Two Clique";
+	bipartite(0,0,grev,1,color)?cout<<"Two Clique":cout<<"Not Possible";
 // 	IP
-// 	5 5
-//  0 1
-//  1 2
-//  2 0
-//  0 3
-//  3 4
+//	5 5
+//      0 1
+//      1 2
+//      2 0
+//      0 3
+//      3 4
 	return 0;
 }
