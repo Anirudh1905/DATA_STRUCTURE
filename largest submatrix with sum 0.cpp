@@ -13,7 +13,12 @@ pair<int,pair<int,int>> subsum(int arr[],int n)
         s+=arr[i];
         if(s==0)
         {
-            if(ans<i+1)
+            if(ans==0)
+            {
+                ans=1;
+                a=i;b=i;
+            }
+            else if(ans<i+1)
             {
                 ans=i+1;
                 a=0;b=i;
@@ -62,7 +67,6 @@ void sumZeroMatrix(int m[][MAX_COL], int r, int c)
 }
 
 // Driver program to test above functions
-// for finding max sum comment that 0 conversion to -1
 int main()
 {
 	int a[MAX_ROW][MAX_COL] = { {0, 0, 1, 1},
