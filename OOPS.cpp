@@ -9,7 +9,7 @@ class Parent
     int x=0;
     void print()
     {
-        cout<<"Class A"<<this->x<<y<<endl;
+        cout<<"Class Parent"<<this->x<<y<<endl;
     }
     static void print(string s)
     {
@@ -18,6 +18,10 @@ class Parent
     int operator +(Parent p1)
     {
         return p1.x*x + p1.y*y;
+    }
+    void test()
+    {
+        cout<<"Testing in Parent"<<endl;
     }
 };
 class Child:public Parent
@@ -29,18 +33,37 @@ class Child:public Parent
     }
     void printChild()
     {
-        cout<<"Class B "<<y<<endl;
+        cout<<"Class Child "<<y<<endl;
+    }
+    void test()
+    {
+        cout<<"Testing in Child"<<endl;
     }
 };
-
+class A //abstract class
+{
+    public:
+    virtual void f()=0; //pure virtual function
+};
+class B:public A
+{
+    public:
+    void f()
+    {
+        cout<<"Data Abstraction"<<endl;
+    }
+};
 int main()
 {
     Child obj(3,4),obj1(5,6);
     obj.printChild();
     obj.print();
-    obj.print("Overloading");
-    Parent::print("Hello");
-    cout<<obj+obj1<<endl;
-    
+    obj.print("Overloading");   //fn overloading
+    Parent::print("Hello"); //static fn call
+    cout<<obj+obj1<<endl;   //op overloading
+    Parent *p=&obj; //fn overriding
+    p->test();
+    obj.test();
+    B b;b.f();  //data Abstraction
     return 0;
 }
