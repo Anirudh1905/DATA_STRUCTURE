@@ -27,9 +27,13 @@ class Parent
 class Child:public Parent
 {
     public:
-    Child(int a,int b)
+    Child(int x,int y)
     {
         this->x=x;this->y=y;
+    }
+    Child(const Child &c)   //copy constructor
+    {
+        x=c.x;y=c.y;
     }
     void printChild()
     {
@@ -43,19 +47,36 @@ class Child:public Parent
 class A //abstract class
 {
     public:
+    int a=1;
     virtual void f()=0; //pure virtual function
 };
 class B:public A
 {
     public:
+    int b=2;
     void f()
     {
         cout<<"Data Abstraction"<<endl;
     }
 };
+class C:public B   //multilevel inheritance
+{
+    private:
+    string x="friend function";
+    public:
+    C()
+    {
+        cout<<b<<endl;
+    }
+    friend void show(C &ob);
+};
+void show(C &c)
+{
+    cout<<c.x<<endl;
+}
 int main()
 {
-    Child obj(3,4),obj1(5,6);
+    Child obj(3,4),obj1=obj;
     obj.printChild();
     obj.print();
     obj.print("Overloading");   //fn overloading
@@ -65,5 +86,6 @@ int main()
     p->test();
     obj.test();
     B b;b.f();  //data Abstraction
+    C c;show(c);    //friend fn
     return 0;
 }
