@@ -1,3 +1,4 @@
+# Contributed by: Piyush Goel
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -62,4 +63,3 @@ int main()
     cout<<ans;
     return 0;
 }
-@piyushgoel
