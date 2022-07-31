@@ -14,11 +14,11 @@ public:
     }
     int sum(int i,int sl,int sr,int l,int r)
     {
-        if(l<=sl && r>=sr)
+        if(l<=sl && r>=sr)  //total overlap
             return seg[i];
-        if(sr<l || sl>r)
+        if(sr<l || sl>r)    //no overlap
             return 0;
-        int m=(sl+sr)/2;
+        int m=(sl+sr)/2;    //partial overlap
         return sum(2*i+1,sl,m,l,r)+sum(2*i+2,m+1,sr,l,r);
     }
     NumArray(vector<int>& a) {
